@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.project.quiz.app.model.enums.DifficultyLevel;
+
 import lombok.Data;
 
 @Data
