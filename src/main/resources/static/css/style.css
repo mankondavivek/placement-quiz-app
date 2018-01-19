@@ -1,0 +1,19 @@
+div{
+    position: relative;
+}
+
+.begintestbox{
+    height: 25em;
+    width: 50em;
+    text-align: center;
+}
+
+.begintestbox-title{
+    width: auto;
+    height: auto;
+}
+
+#begintestbtn{
+    position: relative;
+    top: 16em;
+}
