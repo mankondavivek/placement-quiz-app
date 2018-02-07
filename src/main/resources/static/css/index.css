@@ -1,11 +1,22 @@
+
 div{
     position: relative;
 }
 
+.container-fluid{
+    background-color: cornflowerblue;
+}
+
 .begintestbox{
     height: 25em;
-    width: 50em;
+    width: 50%;
     text-align: center;
+    left: 0;
+    right: 0;
+    top: 10em;
+    margin: auto;
+    position: relative;
+    vertical-align: middle;
 }
 
 .begintestbox-title{

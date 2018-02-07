@@ -19,6 +19,6 @@ public class WelcomeController {
 	 */
 	@RequestMapping(value = "/")
 	public void redirectToLogin(HttpServletResponse response) throws IOException {
-		response.sendRedirect("/begintest.html");
+		response.sendRedirect("/views/index.html");
 	}
 }
