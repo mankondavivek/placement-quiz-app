@@ -21,4 +21,8 @@ public class WelcomeController {
 	public void redirectToLogin(HttpServletResponse response) throws IOException {
 		response.sendRedirect("/views/index.html");
 	}
+	@RequestMapping(value = "/admin")
+	public void redirectToAdmin(HttpServletResponse response) throws IOException {
+		response.sendRedirect("/views/admin.html");
+	}
 }
