@@ -1,5 +1,7 @@
 package com.project.quiz.app.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -100,8 +102,15 @@ public class ChoiceController {
 	public ResponseEntity<?> getAllChoices() {
 
 		log.trace(LogMessage.hitController);
-		// TODO
+		
+		List<ChoiceDto> responseDtos = null;
+		try {
+			responseDtos = choiceFacade.getAllChoices();
+		} catch (ChoiceNotFoundException e) {
+			ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorDto(e.getMessage()));
+		}
+		
 		log.trace(LogMessage.exitController);
-		return ResponseEntity.ok(null);
+		return ResponseEntity.ok(responseDtos);
 	}
 }
