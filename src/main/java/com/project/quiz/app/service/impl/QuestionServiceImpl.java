@@ -22,7 +22,7 @@ public class QuestionServiceImpl implements QuestionService {
 	private QuestionRepository questionRepository;
 
 	@Override
-	public Question createQuestion(Question question)
+	public Question addQuestion(Question question)
 			throws QuestionAlreadyExistsException, MissingParametersException {
 
 		log.trace("Entered Question Service.");
@@ -50,7 +50,7 @@ public class QuestionServiceImpl implements QuestionService {
 	}
 
 	@Override
-	public Question readQuestion(long id) throws QuestionNotFoundException {
+	public Question getQuestion(long id) throws QuestionNotFoundException {
 
 		Question question = questionRepository.findOne(id);
 
@@ -85,7 +85,7 @@ public class QuestionServiceImpl implements QuestionService {
 	}
 
 	@Override
-	public List<Question> readAllQuestions() throws QuestionNotFoundException {
+	public List<Question> getAllQuestions() throws QuestionNotFoundException {
 
 		List<Question> questions = (List<Question>) questionRepository.findAll();
 		if(questions.isEmpty()) {

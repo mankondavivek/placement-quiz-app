@@ -10,13 +10,13 @@ import com.project.quiz.app.model.Question;
 public interface QuestionService {
 
 	
-	public Question createQuestion(Question question) throws QuestionAlreadyExistsException, MissingParametersException;
+	public Question addQuestion(Question question) throws QuestionAlreadyExistsException, MissingParametersException;
 	
-	public Question readQuestion(long id) throws QuestionNotFoundException;
+	public Question getQuestion(long id) throws QuestionNotFoundException;
 	
-	public Question updateQuestion(Question question) throws QuestionNotFoundException;
+	public Question updateQuestion(Question question) throws QuestionNotFoundException, MissingParametersException;
 	
 	public void deleteQuestion(long id) throws QuestionNotFoundException;
 	
-	public List<Question> readAllQuestions() throws QuestionNotFoundException;
+	public List<Question> getAllQuestions() throws QuestionNotFoundException;
 }
