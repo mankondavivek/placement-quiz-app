@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.quiz.app.dto.ChoiceDto;
@@ -24,13 +27,14 @@ import lombok.extern.log4j.Log4j;
 
 @Log4j
 @RestController
+@RequestMapping("/quiz/api")
 public class ChoiceController {
 
 	@Autowired
 	private ChoiceFacade choiceFacade;
 
-	@PostMapping("/")
-	public ResponseEntity<?> addChoice(ChoiceDto choiceDto) {
+	@PostMapping("/choice")
+	public ResponseEntity<?> addChoice(@RequestBody(required = true)ChoiceDto choiceDto) {
 
 		log.trace(LogMessage.hitController);
 
@@ -47,8 +51,8 @@ public class ChoiceController {
 		return ResponseEntity.ok(responseDto);
 	}
 
-	@GetMapping("/")
-	public ResponseEntity<?> getChoice(long id) {
+	@GetMapping("/choice")
+	public ResponseEntity<?> getChoice(@RequestParam(value = "choiceId", required = true) long id) {
 
 		log.trace(LogMessage.hitController);
 		
@@ -64,8 +68,8 @@ public class ChoiceController {
 		return ResponseEntity.ok(responseDto);
 	}
 
-	@PutMapping("/")
-	public ResponseEntity<?> updateChoice(ChoiceDto choiceDto) {
+	@PutMapping("/choice")
+	public ResponseEntity<?> updateChoice(@RequestBody(required = true) ChoiceDto choiceDto) {
 
 		log.trace(LogMessage.hitController);
 		
@@ -83,8 +87,8 @@ public class ChoiceController {
 		return ResponseEntity.ok(responseDto);
 	}
 
-	@DeleteMapping("/")
-	public ResponseEntity<?> deleteChoice(long id) {
+	@DeleteMapping("/choice")
+	public ResponseEntity<?> deleteChoice(@RequestParam(value = "choiceId", required = true) long id) {
 
 		log.trace(LogMessage.hitController);
 		
@@ -98,7 +102,7 @@ public class ChoiceController {
 		return ResponseEntity.status(HttpStatus.OK).body(new SuccessDto().getMessage());
 	}
 
-	@GetMapping("/")
+	@GetMapping("/choice/all")
 	public ResponseEntity<?> getAllChoices() {
 
 		log.trace(LogMessage.hitController);

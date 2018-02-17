@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.quiz.app.dto.ErrorDto;
@@ -24,13 +27,14 @@ import lombok.extern.log4j.Log4j;
 
 @Log4j
 @RestController
+@RequestMapping("/quiz/api")
 public class QuestionController {
 	
 	@Autowired
 	private QuestionFacade QuestionFacade;
 
-	@PostMapping("/")
-	public ResponseEntity<?> addQuestion(QuestionDto QuestionDto) {
+	@PostMapping("/question")
+	public ResponseEntity<?> addQuestion(@RequestBody(required = true) QuestionDto QuestionDto) {
 
 		log.trace(LogMessage.hitController);
 
@@ -47,8 +51,8 @@ public class QuestionController {
 		return ResponseEntity.ok(responseDto);
 	}
 
-	@GetMapping("/")
-	public ResponseEntity<?> getQuestion(long id) {
+	@GetMapping("/question")
+	public ResponseEntity<?> getQuestion(@RequestParam(value = "questionId", required = true) long id) {
 
 		log.trace(LogMessage.hitController);
 		
@@ -64,8 +68,8 @@ public class QuestionController {
 		return ResponseEntity.ok(responseDto);
 	}
 
-	@PutMapping("/")
-	public ResponseEntity<?> updateQuestion(QuestionDto QuestionDto) {
+	@PutMapping("/question")
+	public ResponseEntity<?> updateQuestion(@RequestBody(required = true) QuestionDto QuestionDto) {
 
 		log.trace(LogMessage.hitController);
 		
@@ -83,8 +87,8 @@ public class QuestionController {
 		return ResponseEntity.ok(responseDto);
 	}
 
-	@DeleteMapping("/")
-	public ResponseEntity<?> deleteQuestion(long id) {
+	@DeleteMapping("/question")
+	public ResponseEntity<?> deleteQuestion(@RequestParam(value = "questionId", required = true) long id) {
 
 		log.trace(LogMessage.hitController);
 		
@@ -98,7 +102,7 @@ public class QuestionController {
 		return ResponseEntity.status(HttpStatus.OK).body(new SuccessDto().getMessage());
 	}
 
-	@GetMapping("/")
+	@GetMapping("/question/all")
 	public ResponseEntity<?> getAllQuestions() {
 
 		log.trace(LogMessage.hitController);

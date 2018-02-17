@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.quiz.app.dto.ErrorDto;
@@ -25,14 +27,14 @@ import lombok.extern.log4j.Log4j;
 
 @Log4j
 @RestController
-@RequestMapping("/subject/quiz/api")
+@RequestMapping("/quiz/api")
 public class SubjectController {
 
 	@Autowired
 	private SubjectFacade SubjectFacade;
 
-	@PostMapping("/")
-	public ResponseEntity<?> addSubject(SubjectDto SubjectDto) {
+	@PostMapping("/subject")
+	public ResponseEntity<?> addSubject(@RequestBody(required = true) SubjectDto SubjectDto) {
 
 		log.trace(LogMessage.hitController);
 
@@ -49,8 +51,8 @@ public class SubjectController {
 		return ResponseEntity.ok(responseDto);
 	}
 
-	@GetMapping("/")
-	public ResponseEntity<?> getSubject(long id) {
+	@GetMapping("/subject")
+	public ResponseEntity<?> getSubject(@RequestParam(value = "subjectId", required = true) long id) {
 
 		log.trace(LogMessage.hitController);
 		
@@ -66,8 +68,8 @@ public class SubjectController {
 		return ResponseEntity.ok(responseDto);
 	}
 
-	@PutMapping("/")
-	public ResponseEntity<?> updateSubject(SubjectDto SubjectDto) {
+	@PutMapping("/subject")
+	public ResponseEntity<?> updateSubject(@RequestBody(required = true) SubjectDto SubjectDto) {
 
 		log.trace(LogMessage.hitController);
 		
@@ -85,8 +87,8 @@ public class SubjectController {
 		return ResponseEntity.ok(responseDto);
 	}
 
-	@DeleteMapping("/")
-	public ResponseEntity<?> deleteSubject(long id) {
+	@DeleteMapping("/subject")
+	public ResponseEntity<?> deleteSubject(@RequestParam(value = "subjectId", required = true) long id) {
 
 		log.trace(LogMessage.hitController);
 		
@@ -100,7 +102,7 @@ public class SubjectController {
 		return ResponseEntity.status(HttpStatus.OK).body(new SuccessDto().getMessage());
 	}
 
-	@GetMapping("/")
+	@GetMapping("/subject/all")
 	public ResponseEntity<?> getAllSubjects() {
 
 		log.trace(LogMessage.hitController);
