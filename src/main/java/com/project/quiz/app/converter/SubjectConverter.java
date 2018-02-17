@@ -10,9 +10,13 @@ import com.project.quiz.app.model.Subject;
 public class SubjectConverter implements Converter<Subject, SubjectDto> {
 
 	@Override
-	public SubjectDto convert(Subject arg0) {
-		// TODO Auto-generated method stub
-		return null;
+	public SubjectDto convert(Subject source) {
+		
+		SubjectDto subjectDto = new SubjectDto();
+		
+		subjectDto.setId(source.getId());
+		subjectDto.setName(source.getName());
+		
+		return subjectDto;
 	}
-
 }

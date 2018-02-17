@@ -11,7 +11,12 @@ public class SubjectDtoConverter implements Converter<SubjectDto, Subject> {
 
 	@Override
 	public Subject convert(SubjectDto source) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Subject subject = new Subject();
+		
+		subject.setId(source.getId());
+		subject.setName(source.getName());
+		
+		return subject;
 	}
 }
